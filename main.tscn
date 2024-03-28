@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgmq2b2lwyxhr"]
+
+[ext_resource type="Script" path="res://rb_BoatController.gd" id="1_bav7t"]
+[ext_resource type="Texture2D" uid="uid://bmirkyikv8w2q" path="res://cat.png" id="3_4prwg"]
+[ext_resource type="Texture2D" uid="uid://ckvrbuk7xrdqo" path="res://boat.png" id="3_jk5e3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f4bq5"]
+radius = 62.89
+height = 256.22
+
+[node name="Main" type="Node2D"]
+position = Vector2(545, 327)
+
+[node name="rb_BoatControl" type="Node2D" parent="."]
+script = ExtResource("1_bav7t")
+
+[node name="Anchor_L" type="RigidBody2D" parent="rb_BoatControl"]
+position = Vector2(-150, 0)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="rb_BoatControl/Anchor_L"]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_4prwg")
+
+[node name="Anchor_R" type="RigidBody2D" parent="rb_BoatControl"]
+position = Vector2(150, 0)
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="rb_BoatControl/Anchor_R"]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_4prwg")
+
+[node name="Boat" type="Node2D" parent="rb_BoatControl"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rb_BoatControl/Boat"]
+shape = SubResource("CapsuleShape2D_f4bq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="rb_BoatControl/Boat"]
+position = Vector2(3.00001, 1.14441e-05)
+scale = Vector2(2.56, 2.6)
+texture = ExtResource("3_jk5e3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
